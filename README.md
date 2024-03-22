@@ -1,8 +1,30 @@
-# React + Vite
+# University Student Attendance Monitoring System (USAMS)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Web Development project in collaboration with UIC - MIS in addressing student attendance in events.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+
+**Frontend:** React, TailwindCSS
+
+**Backend:** FastAPI 
+
+
+## Installation
+
+Install usams-frontend with yarn
+
+```bash
+  npm install --global yarn
+  cd usams
+  cd frontend
+  yarn
+  yarn dev
+```
+    
+## Acknowledgements
+
+ - [Wilfredo Marinay, Jr.](https://github.com/derf567)
+ - [Micah Espinosa](https://github.com/mikkmikkk)
+
+
