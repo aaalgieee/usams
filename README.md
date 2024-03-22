@@ -12,12 +12,11 @@ A Web Development project in collaboration with UIC - MIS in addressing student 
 
 ## Installation
 
-Install usams-frontend with yarn
+Install this repo with yarn
 
 ```bash
   npm install --global yarn
   cd usams
-  cd frontend
   yarn
   yarn dev
 ```
