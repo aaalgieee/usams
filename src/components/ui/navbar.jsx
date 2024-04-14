@@ -1,6 +1,16 @@
 import Button from "./button";
+import { useNavigate } from 'react-router-dom';
+
 
 function Navbar() {
+ const navigate = useNavigate();
+
+ const handledashboardClick = () => {
+ navigate('/dashboard');};
+ const handleCalendarClick = () => {
+navigate('/calendar');
+};
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -21,15 +31,17 @@ function Navbar() {
               />
             </svg>
           </div>
+
+
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a>Dashboard</a>
+            <li onClick={handledashboardClick}>
+            <a>Dashboard</a>
             </li>
-            <li>
-              <a>Calendar</a>
+            <li onClick={handleCalendarClick}>
+            <a>Calendar</a>
             </li>
             <li>
               <a>Generate Report</a>
@@ -51,6 +63,8 @@ function Navbar() {
               <a>About</a>
             </li>
           </ul>
+
+
         </div>
         <a className="btn btn-ghost text-xl">USAMS</a>
       </div>
