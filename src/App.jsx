@@ -6,6 +6,8 @@ import Calendar from "./components/calendar";
 import Report from "./components/report";
 import About from "./components/about";
 import Create from "./components/create";
+import AddUser from "./components/AddUser";
+
 import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";
 
 import Navbar from "./components/ui/navbar";
@@ -21,6 +23,9 @@ const App = () => {
         <Route path="/report" element={<Report />} />
         <Route path="/about" element={<About />} />
         <Route path="/create" element={<Create />} />
+        <Route path="/Adduser" element={<AddUser />} />
+        
+        
 
 
 

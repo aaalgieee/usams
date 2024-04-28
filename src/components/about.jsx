@@ -21,11 +21,6 @@ function About() {
        <h3 style={{ marginTop: "15px", marginLeft: "315px" }}className="text-1xl font-bold">Al Gabriel Orig</h3>
         <h1 style={{ marginTop: "15px", marginLeft: "290px" }}className="max-w-xs">Programmer Backend</h1>
        </div>
-
-
- 
-      
-        
     );
 }
 

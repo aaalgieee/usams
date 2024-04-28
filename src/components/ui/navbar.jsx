@@ -1,15 +1,20 @@
 import Button from "./button";
 import { useNavigate } from 'react-router-dom';
 
-
 function Navbar() {
- const navigate = useNavigate();
+  const navigate = useNavigate();
 
- const handledashboardClick = () => {
- navigate('/dashboard');};
- const handleCalendarClick = () => {
-navigate('/calendar');
-};
+  const handledashboardClick = () => {
+    navigate('/dashboard');
+  };
+
+  const handleCalendarClick = () => {
+    navigate('/calendar');
+  };
+
+  const handleAddUserClick = () => {
+    navigate('/AddUser'); // Redirect to "/AddUser" route
+  };
 
   return (
     <div className="navbar bg-base-100">
@@ -32,25 +37,27 @@ navigate('/calendar');
             </svg>
           </div>
 
-
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li onClick={handledashboardClick}>
-            <a>Dashboard</a>
+              <a>Dashboard</a>
             </li>
             <li onClick={handleCalendarClick}>
-            <a>Calendar</a>
+              <a>Calendar</a>
             </li>
             <li>
               <a>Generate Report</a>
+            </li>
+            <li onClick={handleAddUserClick}> {/* Handle Add User click */}
+              <a>Add User</a>
             </li>
             <li>
               <details>
                 <summary>Settings</summary>
                 <ul className="p-3">
-                  <li>
+                  <li onClick={handleAddUserClick}> {/* Handle Add User click */}
                     <a>Add User</a>
                   </li>
                   <li>
@@ -63,8 +70,6 @@ navigate('/calendar');
               <a>About</a>
             </li>
           </ul>
-
-
         </div>
         <a className="btn btn-ghost text-xl">USAMS</a>
       </div>
@@ -83,7 +88,7 @@ navigate('/calendar');
             <details>
               <summary>Settings</summary>
               <ul className="p-3">
-                <li>
+                <li onClick={handleAddUserClick}> 
                   <a>Add User</a>
                 </li>
                 <li>
@@ -92,6 +97,7 @@ navigate('/calendar');
               </ul>
             </details>
           </li>
+
           <li>
             <a>About</a>
           </li>
@@ -105,4 +111,5 @@ navigate('/calendar');
     </div>
   );
 }
+
 export default Navbar;
