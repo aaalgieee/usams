@@ -1,7 +1,7 @@
 function Table() {
   return (
     <div className="overflow-x-auto">
-      <table className="table">
+      <table className="table ">
         {/* head */}
         <thead>
           <tr>

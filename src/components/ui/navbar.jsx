@@ -6,16 +6,34 @@ function Navbar() {
  const navigate = useNavigate();
 
  const handledashboardClick = () => {
- navigate('/dashboard');};
+   navigate('/dashboard');
+ };
  const handleCalendarClick = () => {
-navigate('/calendar');
+   navigate('/calendar');
+ };
+ const handleaddUserClick = () => {
+   navigate('/adduser');
+ };
+ const handleReportClick = () => {
+  navigate('/report');
+};
+const handleLogoutClick = () => {
+  navigate('/');
+};
+
+const handleAboutClick = () => {
+  navigate('/about');
+};
+
+const handleCreateClick = () => {
+  navigate('/create');
 };
 
   return (
     <div className="navbar bg-base-100">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+    <div className="navbar-start">
+    <div className="dropdown">
+    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -37,10 +55,10 @@ navigate('/calendar');
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li onClick={handledashboardClick}>
+            <li >
             <a>Dashboard</a>
             </li>
-            <li onClick={handleCalendarClick}>
+            <li >
             <a>Calendar</a>
             </li>
             <li>
@@ -51,16 +69,16 @@ navigate('/calendar');
                 <summary>Settings</summary>
                 <ul className="p-3">
                   <li>
-                    <a>Add User</a>
+                    <a onClick={handleaddUserClick}>Add User</a>
                   </li>
                   <li>
-                    <a>Logout</a>
+                    <a onClick={handleLogoutClick}>Logout</a>
                   </li>
                 </ul>
               </details>
             </li>
             <li>
-              <a>About</a>
+              <a onClick={handleAboutClick}>About</a>
             </li>
           </ul>
 
@@ -71,34 +89,34 @@ navigate('/calendar');
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Dashboard</a>
+            <a onClick={handledashboardClick}>Dashboard</a>
           </li>
           <li>
-            <a>Calendar</a>
+            <a onClick={handleCalendarClick}>Calendar</a>
           </li>
           <li>
-            <a>Generate Report</a>
+            <a onClick={handleReportClick}>Generate Report</a>
           </li>
           <li>
             <details>
               <summary>Settings</summary>
               <ul className="p-3">
                 <li>
-                  <a>Add User</a>
+                  <a onClick={handleaddUserClick}>Add User</a>
                 </li>
                 <li>
-                  <a>Logout</a>
+                  <a onClick={handleLogoutClick}>Logout</a>
                 </li>
               </ul>
             </details>
           </li>
           <li>
-            <a>About</a>
+            <a onClick={handleAboutClick}>About</a>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <Button variant="success" fullwidth="false">
+        <Button onClick={handleCreateClick} variant="success" fullwidth="false">
           Add Event
         </Button>
       </div>

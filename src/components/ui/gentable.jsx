@@ -16,7 +16,7 @@ function GenTable() {
           </thead>
           <tbody>
 
-            {/* row 1 */}
+            
             <tr>
               <th>1</th>
               <td>pespinosa_220000000989@uic.edu.ph</td>
@@ -28,7 +28,7 @@ function GenTable() {
             </tr>
 
 
-            {/* row 2 */}
+         
             <tr>
               <th>2</th>
               <td>aorig_200000000296@uic.edu.ph</td>
@@ -40,7 +40,7 @@ function GenTable() {
             </tr>
 
 
-            {/* row 3 */}
+            
             <tr>
               <th>3</th>
               <td>wmarinay_220000001044@uic.edu.ph</td>
@@ -51,7 +51,7 @@ function GenTable() {
               <td>Bonifacio</td>
             </tr>
 
-             {/* row 4 */}
+             
              <tr>
               <th>4</th>
               <td>ktan_220000002154@uic.edu.ph</td>
@@ -60,6 +60,66 @@ function GenTable() {
               <td>CPC</td>
               <td>1:00</td>
               <td>Bangke</td>
+            </tr>
+
+            <tr>
+              <th>5</th>
+              <td>pespinosa_220000000989@uic.edu.ph</td>
+              <td>Princess Micah</td>
+              <td>Espinosa</td>
+              <td>CCS</td>
+              <td>7:30</td>
+              <td>Bonifacio</td>
+            </tr>
+
+            <tr>
+              <th>6</th>
+              <td>pespinosa_220000000989@uic.edu.ph</td>
+              <td>Princess Micah</td>
+              <td>Espinosa</td>
+              <td>CCS</td>
+              <td>7:30</td>
+              <td>Bonifacio</td>
+            </tr>
+
+            <tr>
+              <th>7</th>
+              <td>pespinosa_220000000989@uic.edu.ph</td>
+              <td>Princess Micah</td>
+              <td>Espinosa</td>
+              <td>CCS</td>
+              <td>7:30</td>
+              <td>Bonifacio</td>
+            </tr>
+
+            <tr>
+              <th>8</th>
+              <td>pespinosa_220000000989@uic.edu.ph</td>
+              <td>Princess Micah</td>
+              <td>Espinosa</td>
+              <td>CCS</td>
+              <td>7:30</td>
+              <td>Bonifacio</td>
+            </tr>
+
+            <tr>
+              <th>9</th>
+              <td>pespinosa_220000000989@uic.edu.ph</td>
+              <td>Princess Micah</td>
+              <td>Espinosa</td>
+              <td>CCS</td>
+              <td>7:30</td>
+              <td>Bonifacio</td>
+            </tr>
+
+            <tr>
+              <th>10</th>
+              <td>pespinosa_220000000989@uic.edu.ph</td>
+              <td>Princess Micah</td>
+              <td>Espinosa</td>
+              <td>CCS</td>
+              <td>7:30</td>
+              <td>Bonifacio</td>
             </tr>
 
 
