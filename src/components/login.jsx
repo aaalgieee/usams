@@ -2,6 +2,7 @@ import React from "react";
 import Button from "./ui/button";
 import { useNavigate } from "react-router-dom";
 import Alert from "./ui/alert";
+import axios from "axios";
 
 const Login = () => {
   const [username, setUsername] = React.useState("");
@@ -18,15 +19,28 @@ const Login = () => {
   };
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (username === "" || password === "") {
       setShowError(true); // Show the alert
     } else {
-      navigate("/dashboard");
+      try {
+        const response = await axios.post("http://localhost:8000/login", { username, password });
+        console.log(response);
+        if (response.status === 200) {
+          navigate("/dashboard");
+        } else {
+          setShowError(true); // Show the alert
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 422) {
+          setShowError(true); // Show the alert
+        } else {
+          console.error(error);
+          setShowError(true); // Show the alert
+        }
+      }
     }
-    setUsername("");
-    setPassword("");
   };
 
 
