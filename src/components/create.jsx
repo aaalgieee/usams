@@ -1,14 +1,15 @@
 import { useState } from "react";
 import Navbar from "./ui/navbar";
+import { API_URL } from "../api";
+import { useNavigate } from "react-router-dom";
 
 function Create() {
+  const navigate = useNavigate();
+  
   // State variables to store user input
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [eventName, setEventName] = useState("");
+  const [dateFrom, setDateFrom] = useState("");
+  const [dateTo, setDateTo] = useState("");
   const [error, setError] = useState("");
 
   // Separate state variables for the select elements
@@ -19,27 +20,48 @@ function Create() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!firstName || !lastName || !username || !confirmPassword) {
+    if (!eventName || !dateFrom || !dateTo) {
       setError("All fields are required.");
       return;
     }
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
-
-    console.log("Submitted:", { firstName, lastName, username, password, selectedDepartment, selectedLocation });
-
-    setFirstName("");
-    setLastName("");
-    setUsername("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
+    setEventName("");
+    setDateFrom("");
+    setDateTo("");
     setError("");
     setSelectedDepartment("All");
     setSelectedLocation("All");
+    
+    // Send the data to the server
+    fetch(API_URL + "/events", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        label: eventName,
+        activity_start_date: dateFrom,
+        activity_end_date: dateTo,
+        // limit to 8 characters
+        code: eventName.toUpperCase().replace(" ", "_").substring(0, 8),
+        // department: selectedDepartment,
+        location: selectedLocation
+      })
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Server error");
+        }
+        return response.json();
+      })
+      .then(() => {
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.error("Server error:", error);
+        setError("An error occurred. Please try again.");
+      
+    })
   };
 
   return (
@@ -55,8 +77,8 @@ function Create() {
             <input
               type="text"
               id="firstName"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={eventName}
+              onChange={(e) => setEventName(e.target.value)}
               className="block w-full border rounded-md py-2 px-3 mt-1"
             />
           </div>
@@ -65,8 +87,8 @@ function Create() {
             <input
               type="text"
               id="lastName"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              value={dateFrom}
+              onChange={(e) => setDateFrom(e.target.value)}
               className="block w-full border rounded-md py-2 px-3 mt-1"
             />
           </div>
@@ -75,8 +97,8 @@ function Create() {
             <input
               type="text"
               id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={dateTo}
+              onChange={(e) => setDateTo(e.target.value)}
               className="block w-full border rounded-md py-2 px-3 mt-1"
             />
           </div>
