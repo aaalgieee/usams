@@ -1,0 +1,40 @@
+/* Table.css */
+.button-edit {
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
+  .button-edit:hover {
+    background-color: darkgreen; /* Darker shade on hover */
+  }
+  
+  .button-delete {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
+  .button-delete:hover {
+    background-color: darkred; /* Darker shade on hover */
+  }
+  
+  .button-option {
+    background-color: rgb(85, 18, 173);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
+  .button-option:hover {
+    background-color: darkorchid; /* Darker shade on hover */
+  }
+  
