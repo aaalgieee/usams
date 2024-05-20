@@ -1,0 +1,4 @@
+.text-block {
+    margin-left: 3.5rem; /* Equivalent to ml-14 in Tailwind */
+    margin-top: 4rem; /* Equivalent to mt-16 in Tailwind */
+}

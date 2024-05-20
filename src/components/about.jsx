@@ -1,6 +1,8 @@
 import Navbar from "./ui/navbar";
 import gab from './img/gab.png';
 import fred from './img/fred.png';
+import micah from './img/micah.png';
+import tan from './img/tan.png';
 
 
 function About() {
@@ -17,28 +19,46 @@ function About() {
         that we can promptly address any concerns related to student attendance and engagement.  <br/>This has not only streamlined administrative processes but has also enhanced the overall learning experience for our students.
         </h3>
 
-       <img
-        className="max-w-xs sm:max-w-xs rounded-lg ml-10 sm:ml-20 md:ml-32 lg:ml-40 xl:ml-48 mt-16" 
-        src={gab} alt="Team Member"/>
+        <div>
+        <div style={{ position: "relative" }}>
+            <h3 style={{ position: "absolute", top: "420px", left: "140px" }} className="max-w-xs">Al Gabriel Orig</h3>
+            <h1 style={{ position: "absolute", top: "400px", left: "110px" }} className="text-1xl font-bold">Programmer Backend</h1>
+            <h3 style={{ position: "absolute", top: "420px", left: "522px" }} className="max-w-xs">Wilfredo G. Marinay Jr</h3>
+            <h1 style={{ position: "absolute", top: "400px", left: "510px" }} className="text-1xl font-bold">Backend/Frontend/Test</h1>
+            <h3 style={{ position: "absolute", top: "420px", left: "922px" }} className="max-w-xs">Princess Micah Espinosa</h3>
+            <h1 style={{ position: "absolute", top: "400px", left: "910px" }} className="text-1xl font-bold">FrontEnd/Documentation</h1>
+            <h3 style={{ position: "absolute", top: "420px", left: "1372px" }} className="max-w-xs">Kyle Tan</h3>
+            <h1 style={{ position: "absolute", top: "400px", left: "1360px" }} className="text-1xl font-bold">Lead Tester</h1>
+          
+         </div>
 
-        <img
-        className="max-w-xs sm:max-w-xs rounded-lg ml-10 sm:ml-20 md:ml-32 lg:ml-40 xl:ml-48 mt-16" 
-        src={fred} alt="Team Member"/>
 
-      
+         <div className="flex justify-start">
+            <img
+               className="max-w-xs sm:max-w-xs rounded-lg mx-10 mt-16"
+               src={gab}
+               alt="Team Member"
+            />
+            <img
+               className="max-w-xs sm:max-w-xs rounded-lg mx-10 mt-16"
+               src={fred}
+               alt="Team Member"
+            />
+            <img
+               className="max-w-xs sm:max-w-xs rounded-lg mx-10 mt-16"
+               src={micah}
+               alt="Team Member"
+            />
+            <img
+               className="max-w-xs sm:max-w-xs rounded-lg mx-10 mt-16"
+               src={tan}
+               alt="Team Member"
+            />
+         </div>
 
-     <div>
-     <h3 className="ml-14 text-1xl font-bold">Al Gabriel Orig</h3>
-        <h1 style={{ marginTop: "15px", marginLeft: "290px" }}className="max-w-xs">Programmer Backend</h1>
 
-       
+         </div>
      </div>
-       </div>
-
-
- 
-      
-        
     );
 }
 

@@ -6,7 +6,8 @@ function Dashboard() {
     return (
         <div>
             <Navbar />
-            <Hero />
+            <br/>
+            <Hero/>
             <br/>
             <Table />
         </div>

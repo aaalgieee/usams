@@ -1,10 +1,12 @@
 import Navbar from "./ui/navbar";
 import { useState } from "react";
+import axios from "axios";
+import { API_URL } from "../api";
 
 function Add() {
     // State variables to store user input
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [firstname, setfirstname] = useState("");
+    const [lastname, setlastname] = useState("");
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -13,10 +15,19 @@ function Add() {
   
     // Function to handle form submission
     const handleSubmit = (event) => {
+      axios.post(API_URL + "/register", { firstname, lastname, username, email, password })
+        .then((response) => {
+          console.log("User added successfully:", response.data);
+          // Do something with the response if needed
+        })
+        .catch((error) => {
+          console.error("Error adding user:", error);
+          // Handle the error if needed
+        });
       event.preventDefault();
   
   
-      if (!firstName || !lastName || !username || !email || !password || !confirmPassword) {
+      if (!firstname || !lastname || !username || !password || !confirmPassword) {
         setError("All fields are required.");
         return;
       }
@@ -26,12 +37,11 @@ function Add() {
         return;
       }
   
-      console.log("Submitted:", { firstName, lastName, username, email, password });
+      console.log("Submitted:", { firstname, lastname, username, password });
   
-      setFirstName("");
-      setLastName("");
+      setfirstname("");
+      setlastname("");
       setUsername("");
-      setEmail("");
       setPassword("");
       setConfirmPassword("");
       setError("");
@@ -46,22 +56,22 @@ function Add() {
           {error && <div className="text-red-600 mb-4">{error}</div>}
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label htmlFor="firstName" className="block font-medium">First Name</label>
+              <label htmlFor="firstname" className="block font-medium">First Name</label>
               <input
                 type="text"
-                id="firstName"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                id="firstname"
+                value={firstname}
+                onChange={(e) => setfirstname(e.target.value)}
                 className="block w-full border rounded-md py-2 px-3 mt-1"
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="lastName" className="block font-medium">Last Name</label>
+              <label htmlFor="lastname" className="block font-medium">Last Name</label>
               <input
                 type="text"
-                id="lastName"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                id="lastname"
+                value={lastname}
+                onChange={(e) => setlastname(e.target.value)}
                 className="block w-full border rounded-md py-2 px-3 mt-1"
               />
             </div>
@@ -72,16 +82,6 @@ function Add() {
                 id="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="block w-full border rounded-md py-2 px-3 mt-1"
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="email" className="block font-medium">Email</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 className="block w-full border rounded-md py-2 px-3 mt-1"
               />
             </div>

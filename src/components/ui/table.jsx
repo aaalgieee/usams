@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import { API_URL } from "../../api";
+import axios from "axios";
 
 function Table() {
   const [events, setEvents] = useState([]);
   
-  useEffect(() => {
-    fetch(API_URL + "/events")
-      .then((response) => response.json())
-      .then((data) => setEvents(data));
-  }, []);
+  const fetchEvents = async () => {
+    try {
+      const response = await axios.get(API_URL + "/events", { headers: { "Access-Control-Allow-Origin": "*" } });
+      setEvents(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  fetchEvents();
   
   return (
     <div className="overflow-x-auto">
@@ -21,7 +27,6 @@ function Table() {
             <th>Date From</th>
             <th>Date To</th>
             <th>Location</th>
-            <th>Department</th>
           </tr>
         </thead>
         <tbody>
@@ -33,7 +38,6 @@ function Table() {
               <td>{event.activity_start_date}</td>
               <td>{event.activity_end_date}</td>
               <td>{event.location}</td>
-              <td>Unknown</td>
             </tr>
           ))}
         </tbody>

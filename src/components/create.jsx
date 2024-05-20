@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "./ui/navbar";
 import { API_URL } from "../api";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Create() {
@@ -13,7 +14,7 @@ function Create() {
   const [error, setError] = useState("");
 
   // Separate state variables for the select elements
-  const [selectedDepartment, setSelectedDepartment] = useState("All");
+
   const [selectedLocation, setSelectedLocation] = useState("All");
 
   // Function to handle form submission
@@ -29,39 +30,23 @@ function Create() {
     setDateFrom("");
     setDateTo("");
     setError("");
-    setSelectedDepartment("All");
     setSelectedLocation("All");
     
     // Send the data to the server
-    fetch(API_URL + "/events", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        label: eventName,
-        activity_start_date: dateFrom,
-        activity_end_date: dateTo,
-        // limit to 8 characters
-        code: eventName.toUpperCase().replace(" ", "_").substring(0, 8),
-        // department: selectedDepartment,
-        location: selectedLocation
-      })
+    axios.post(API_URL + "/events", {
+      label: eventName,
+      activity_start_date: dateFrom,
+      activity_end_date: dateTo,
+      //code: eventName.toUpperCase().replace(" ", "_").substring(0, 8),
+      location: selectedLocation
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Server error");
-        }
-        return response.json();
-      })
-      .then(() => {
-        navigate("/dashboard");
+      .then(() => { // Remove the unused 'response' parameter
+      navigate("/dashboard");
       })
       .catch((error) => {
-        console.error("Server error:", error);
-        setError("An error occurred. Please try again.");
-      
-    })
+      console.error("Server error:", error);
+      setError("An error occurred. Please try again.");
+      });
   };
 
   return (
@@ -73,49 +58,36 @@ function Create() {
         {error && <div className="text-red-600 mb-4">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="firstName" className="block font-medium">Event Name:</label>
+            <label htmlFor="label" className="block font-medium">Event Name:</label>
             <input
               type="text"
-              id="firstName"
+              id="label"
               value={eventName}
               onChange={(e) => setEventName(e.target.value)}
               className="block w-full border rounded-md py-2 px-3 mt-1"
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="lastName" className="block font-medium">Date From:</label>
+            <label htmlFor="dateFrom" className="block font-medium">Date From:</label>
             <input
-              type="text"
-              id="lastName"
+              type="date"
+              id="activity_start_date"
               value={dateFrom}
               onChange={(e) => setDateFrom(e.target.value)}
               className="block w-full border rounded-md py-2 px-3 mt-1"
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="username" className="block font-medium">Date To:</label>
+            <label htmlFor="dateTo" className="block font-medium">Date To:</label>
             <input
-              type="text"
-              id="username"
+              type="date"
+              id="activity_end_date"
               value={dateTo}
               onChange={(e) => setDateTo(e.target.value)}
               className="block w-full border rounded-md py-2 px-3 mt-1"
             />
           </div>
 
-          <div className="mb-4">
-            <h3>Department:</h3>
-            <select
-              value={selectedDepartment}
-              onChange={(e) => setSelectedDepartment(e.target.value)}
-              className="mt-3 border border-gray-300 rounded-md px-4 py-2"
-            >
-              <option value="All">Select Department</option>
-              <option value="CCS">CCS</option>
-              <option value="CPC">CPC</option>
-              <option value="MLS">MLS</option>
-            </select>
-          </div>
 
           <div className="mb-4">
             <h3>Location:</h3>
@@ -125,13 +97,13 @@ function Create() {
               className="mt-3 border border-gray-300 rounded-md px-4 py-2"
             >
               <option value="All">Select Location</option>
-              <option value="Main">Bangke(Main)</option>
+              <option value="Main">Banke(Main)</option>
               <option value="Boni">Bonifacio</option>
               <option value="Bajada">Bajada</option>
             </select>
           </div>
 
-          <button type="submit" className="bg-blue-500 text-white rounded-md py-2 px-4">Add User</button>
+          <button type="submit" className="w-full bg-blue-500 text-white rounded-md py-2 px-4">Submit</button>
         </form>
       </div>
     </div>
