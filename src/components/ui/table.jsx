@@ -1,13 +1,17 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
+
 import { useEffect } from "react";
 import { API_URL } from "../../api";
 import axios from "axios";
 import "./Table.css"; // Import the CSS file
-import TapID from "../TapID";
+import { useNavigate } from "react-router-dom";
+
+
 
 function Table() {
+  const navigate = useNavigate();
   const [events, setEvents] = useState([]);
-  const [selectedActivityId, setSelectedActivityId] = useState(null);
 
   const fetchEvents = async () => {
     try {
@@ -27,10 +31,21 @@ function Table() {
     fetchEvents();
   }, []);
 
+
+  const GotoTapID = (activity_id) => {
+  window.open(`/tapid/${activity_id}`, "_blank");
+  };
+  
+  const getReport = (activity_id) => {
+    navigate(`/report/${activity_id}`); 
+  };
+
   const handleEdit = (eventId) => {
     console.log("Edit event with id:", eventId);
     // Implement edit functionality here
   };
+
+
 
   const handleDelete = async (activity_id) => {
     try {
@@ -44,17 +59,16 @@ function Table() {
     }
   };
 
-  const gotoTapID = (activity_id) => {
-    setSelectedActivityId(activity_id);
-  };
-
   return (
+    <div>
+    <h1 className="font-bold text-5xl text-center">List of Events</h1>
+    <br></br>
+    <br></br>
     <div className="overflow-x-auto">
       <table className="table">
         {/* head */}
         <thead>
           <tr>
-            <th>Activity ID</th>
             <th>Event Name</th>
             <th>Date From</th>
             <th>Date To</th>
@@ -65,7 +79,7 @@ function Table() {
         <tbody>
           {events.map((event) => (
             <tr key={`event_${event.activity_id}`}>
-              <th>{event.activity_id}</th>
+              
               <td>{event.label}</td>
               <td>{event.activity_start_date}</td>
               <td>{event.activity_end_date}</td>
@@ -82,7 +96,12 @@ function Table() {
                 </button>
               </td>
               <td>
-                <button onClick={() => gotoTapID(event.activity_id)} className="button-option">
+                <button onClick={() => getReport(event.activity_id)} className="button-edit">
+                  Generate List
+                </button>
+              </td>
+              <td>
+                <button onClick={() => GotoTapID(event.activity_id)} className="button-option">
                   Run
                 </button>
               </td>
@@ -90,7 +109,8 @@ function Table() {
           ))}
         </tbody>
       </table>
-      {selectedActivityId && <TapID activity_id={selectedActivityId} />} {/* Pass activity_id as prop */}
+
+    </div>
     </div>
   );
 }

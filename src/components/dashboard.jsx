@@ -1,5 +1,5 @@
 import Navbar from "./ui/navbar";
-import Hero from "./ui/hero";
+
 import Table from "./ui/table";
 
 function Dashboard() {
@@ -7,7 +7,6 @@ function Dashboard() {
         <div>
             <Navbar />
             <br/>
-            <Hero/>
             <br/>
             <Table />
         </div>

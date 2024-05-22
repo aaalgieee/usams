@@ -1,15 +1,22 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
+
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import logo from './img/logo.png';
 import { API_URL } from "../api";
-import { useParams } from 'react-router-dom';
+
+
 
 const TapID = () => {
-  const { activity_id } = useParams();
+  const {activity_id} = useParams();
   const [studentNumber, setStudentNumber] = useState('');
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
   
+  
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -17,11 +24,12 @@ const TapID = () => {
       const response = await axios.post(`${API_URL}/attendance`, {
         attendance_id: 0,
         student_number: studentNumber,
-        activity_id: 4, // Use the received activity_id prop
+        activity_id: activity_id, 
       });
 
       setMessage(response.data.message);
       setError(null);
+      setStudentNumber('')
     } catch (err) {
       setError(err.response ? err.response.data : 'Error adding attendance');
       setMessage(null);

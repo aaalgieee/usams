@@ -1,14 +1,18 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
+
 import axios from 'axios';
 import { API_URL } from '../api';
+import { useParams } from 'react-router-dom';
 
 const AttendanceList = () => {
+  const {activity_id} = useParams();
   const [attendance, setAttendance] = useState([]);
 
   useEffect(() => {
     const fetchAttendance = async () => {
       try {
-        const response = await axios.get(API_URL + '/reports/4');
+        const response = await axios.get(API_URL + '/reports/' + activity_id);
         setAttendance(response.data);
       } catch (error) {
         console.error('Error fetching attendance:', error);
