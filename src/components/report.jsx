@@ -1,30 +1,52 @@
-import React, { useState } from 'react';
-import Navbar from "./ui/navbar";
-import Table from "./ui/gentable";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { API_URL } from '../api';
 
-function Report() {
-  const [selectedFilter, setSelectedFilter] = useState('All');
+const AttendanceList = () => {
+  const [attendance, setAttendance] = useState([]);
 
-  const handleFilterChange = (event) => {
-    setSelectedFilter(event.target.value);
-  
-  };
+  useEffect(() => {
+    const fetchAttendance = async () => {
+      try {
+        const response = await axios.get(API_URL + '/reports/4');
+        setAttendance(response.data);
+      } catch (error) {
+        console.error('Error fetching attendance:', error);
+      }
+    };
+
+    fetchAttendance();
+  }, []);
 
   return (
-    <div>
-      <Navbar />
-      <div> 
-     <h3 style={{ marginLeft: "150px", marginTop: "3px" }}>Filter:</h3> 
-     <select value={selectedFilter} onChange={handleFilterChange} className="mt-3 border border-gray-300 rounded-md px-4 py-2" style={{ marginLeft: "200px" }} >
-          <option value="All">All</option>
-          <option value="CCS">CCS</option>
-          <option value="CPC">CPC</option>
-          
-    </select>
-     </div>
-      <Table />
+    <div className="container mx-auto">
+      <h1 className="text-2xl font-bold mb-4">Attendance List</h1>
+      <table className="table-auto w-full">
+        <thead>
+          <tr>
+            <th className="px-4 py-2">Attendance ID</th>
+            <th className="px-4 py-2">Activity Name</th>
+            <th className="px-4 py-2">Student Number</th>
+            <th className="px-4 py-2">First Name</th>
+            <th className="px-4 py-2">Last Name</th>
+            <th className="px-4 py-2">Date Time Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          {attendance.map(record => (
+            <tr key={record.attendance_id}>
+              <td className="border px-4 py-2">{record.attendance_id}</td>
+              <td className="border px-4 py-2">{record.activity_label}</td>
+              <td className="border px-4 py-2">{record.student_number}</td>
+              <td className="border px-4 py-2">{record.firstname}</td>
+              <td className="border px-4 py-2">{record.lastname}</td>
+              <td className="border px-4 py-2">{record.datetime_created}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-}
+};
 
-export default Report;
+export default AttendanceList;

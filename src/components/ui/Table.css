@@ -1,6 +1,6 @@
 /* Table.css */
 .button-edit {
-    background-color: green;
+    background-color: orange;
     color: white;
     padding: 5px 10px;
     border: none;
@@ -9,7 +9,7 @@
   }
   
   .button-edit:hover {
-    background-color: darkgreen; /* Darker shade on hover */
+    background-color: darkorange; /* Darker shade on hover */
   }
   
   .button-delete {
@@ -26,7 +26,7 @@
   }
   
   .button-option {
-    background-color: rgb(85, 18, 173);
+    background-color: green;
     color: white;
     padding: 5px 10px;
     border: none;
@@ -35,6 +35,6 @@
   }
   
   .button-option:hover {
-    background-color: darkorchid; /* Darker shade on hover */
+    background-color: darkgreen; /* Darker shade on hover */
   }
   

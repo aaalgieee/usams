@@ -9,12 +9,12 @@ function Create() {
   
   // State variables to store user input
   const [eventName, setEventName] = useState("");
+  const [department, setDepartment] = useState("");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [error, setError] = useState("");
 
   // Separate state variables for the select elements
-
   const [selectedLocation, setSelectedLocation] = useState("All");
 
   // Function to handle form submission
@@ -29,14 +29,16 @@ function Create() {
     setEventName("");
     setDateFrom("");
     setDateTo("");
-    setError("");
+    setDepartment("");
     setSelectedLocation("All");
     
     // Send the data to the server
     axios.post(API_URL + "/events", {
+      activity_id: 0,
       label: eventName,
       activity_start_date: dateFrom,
       activity_end_date: dateTo,
+      department: department,
       //code: eventName.toUpperCase().replace(" ", "_").substring(0, 8),
       location: selectedLocation
     })
@@ -88,6 +90,16 @@ function Create() {
             />
           </div>
 
+          <div className="mb-4">
+            <label htmlFor="department" className="block font-medium">Department:</label>
+            <input
+              type="text"
+              id="department"
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+              className="block w-full border rounded-md py-2 px-3 mt-1"
+            />
+          </div>
 
           <div className="mb-4">
             <h3>Location:</h3>
@@ -96,10 +108,10 @@ function Create() {
               onChange={(e) => setSelectedLocation(e.target.value)}
               className="mt-3 border border-gray-300 rounded-md px-4 py-2"
             >
-              <option value="All">Select Location</option>
-              <option value="Main">Banke(Main)</option>
-              <option value="Boni">Bonifacio</option>
-              <option value="Bajada">Bajada</option>
+              <option value="---">Select Location</option>
+              <option value="Main">Bankerohan(Main)</option>
+              <option value="Annex">Bonifacio(Annex)</option>
+              <option value="Bajada">Bajada(BED)</option>
             </select>
           </div>
 
