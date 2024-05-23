@@ -11,6 +11,7 @@ import Add from "./components/adduser";
 import TapID from "./components/TapID";
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";
+import Edit from "./components/edit";
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/create" element={<Create />} />
         <Route path="/adduser" element={<Add/>} />
         <Route path="/tapid/:activity_id" element={<TapID />} />
+        <Route path="/edit/:activity_id" element={<Edit/>}/>
 
         
        

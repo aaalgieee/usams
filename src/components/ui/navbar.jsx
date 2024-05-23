@@ -8,22 +8,16 @@ function Navbar() {
  const handledashboardClick = () => {
    navigate('/dashboard');
  };
- const handleCalendarClick = () => {
-   navigate('/calendar');
- };
+
  const handleaddUserClick = () => {
    navigate('/adduser');
  };
- const handleReportClick = () => {
-  navigate('/report');
-};
+
 const handleLogoutClick = () => {
   navigate('/');
 };
 
-const handleAboutClick = () => {
-  navigate('/about');
-};
+
 
 const handleCreateClick = () => {
   navigate('/create');
@@ -56,35 +50,19 @@ const handleCreateClick = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li >
-            <a>Dashboard</a>
+            <a onClick={handledashboardClick}>Dashboard</a>
             </li>
             <li >
-            <a>Calendar</a>
+            <a onClick={handleaddUserClick}>Add User</a>
             </li>
             <li>
-              <a>Generate Report</a>
-            </li>
-            <li>
-              <details>
-                <summary>Settings</summary>
-                <ul className="p-3">
-                  <li>
-                    <a onClick={handleaddUserClick}>Add User</a>
-                  </li>
-                  <li>
-                    <a onClick={handleLogoutClick}>Logout</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a onClick={handleAboutClick}>About</a>
+              <a onClick={handleLogoutClick}>Logout</a>
             </li>
           </ul>
 
 
         </div>
-        <a className="btn btn-ghost text-xl">USAMS</a>
+        <a onClick={handledashboardClick} className="btn btn-ghost text-xl">USAMS</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -92,26 +70,10 @@ const handleCreateClick = () => {
             <a onClick={handledashboardClick}>Dashboard</a>
           </li>
           <li>
-            <a onClick={handleCalendarClick}>Calendar</a>
+            <a onClick={handleaddUserClick}>Add User</a>
           </li>
           <li>
-            <a onClick={handleReportClick}>Generate Report</a>
-          </li>
-          <li>
-            <details>
-              <summary>Settings</summary>
-              <ul className="p-3">
-                <li>
-                  <a onClick={handleaddUserClick}>Add User</a>
-                </li>
-                <li>
-                  <a onClick={handleLogoutClick}>Logout</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a onClick={handleAboutClick}>About</a>
+            <a onClick={handleLogoutClick}>Logout</a>
           </li>
         </ul>
       </div>

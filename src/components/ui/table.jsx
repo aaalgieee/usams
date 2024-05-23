@@ -37,12 +37,11 @@ function Table() {
   };
   
   const getReport = (activity_id) => {
-    navigate(`/report/${activity_id}`); 
+    window.open(`/report/${activity_id}`, "_blank")
   };
 
-  const handleEdit = (eventId) => {
-    console.log("Edit event with id:", eventId);
-    // Implement edit functionality here
+  const handleEdit = (activity_id) => {
+    navigate(`/edit/${activity_id}`);
   };
 
 
@@ -91,7 +90,7 @@ function Table() {
                 </button>
               </td>
               <td>
-                <button onClick={() => handleEdit(event.code)} className="button-edit">
+                <button onClick={() => handleEdit(event.activity_id)} className="button-edit">
                   Option
                 </button>
               </td>

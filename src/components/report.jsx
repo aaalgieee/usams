@@ -23,34 +23,41 @@ const AttendanceList = () => {
   }, []);
 
   return (
-    <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">Attendance List</h1>
-      <table className="table-auto w-full">
-        <thead>
-          <tr>
-            <th className="px-4 py-2">Attendance ID</th>
-            <th className="px-4 py-2">Activity Name</th>
-            <th className="px-4 py-2">Student Number</th>
-            <th className="px-4 py-2">First Name</th>
-            <th className="px-4 py-2">Last Name</th>
-            <th className="px-4 py-2">Date Time Created</th>
-          </tr>
-        </thead>
-        <tbody>
-          {attendance.map(record => (
+    <div>
+    <br></br>
+    {attendance.map(record => (
+      <h1 key={record.attendance_id} className='text-center text-3xl font-bold'>Attendance List of {record.activity_label}</h1>))}
+      
+      <br></br>
+      <br></br>
+    <div className="overflow-x-auto">
+  <table className="table table-xs text-center">
+    <thead>
+      <tr>
+        <th>Student Number</th> 
+        <th>Last Name</th> 
+        <th>First Name</th> 
+        <th>Date & Time</th> 
+      </tr>
+    </thead> 
+    <tbody>
+    {attendance.map(record => (
             <tr key={record.attendance_id}>
-              <td className="border px-4 py-2">{record.attendance_id}</td>
-              <td className="border px-4 py-2">{record.activity_label}</td>
               <td className="border px-4 py-2">{record.student_number}</td>
-              <td className="border px-4 py-2">{record.firstname}</td>
               <td className="border px-4 py-2">{record.lastname}</td>
+              <td className="border px-4 py-2">{record.firstname}</td>
+              
+              
               <td className="border px-4 py-2">{record.datetime_created}</td>
             </tr>
           ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
+    </tbody> 
+  </table>
+  </div>
+</div>
+);
+}
 
 export default AttendanceList;
+
+

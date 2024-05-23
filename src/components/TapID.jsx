@@ -65,7 +65,7 @@ const TapID = () => {
             {message && <p className="text-green-500 text-sm">{message}</p>}
           </div>
           <div>
-            <button type="submit" className="text-white w-full py-2 px-4 bg-blue-600 rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <button type="submit" className="text-white w-full py-2 px-4 bg-blue-400 rounded-md  hover:bg-blue-500 focus:outline-none ">
               SUBMIT
             </button>
           </div>
